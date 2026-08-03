@@ -49,6 +49,21 @@
   .nav-links a{text-decoration:none;opacity:0.85;transition:opacity .2s, color .2s;padding-bottom:4px;border-bottom:2px solid transparent;}
   .nav-links a:hover{opacity:1;border-color:var(--clay);}
   @media(max-width:640px){.nav-links{display:none;}}
+  .nav-contact-btn{
+    background:var(--clay);
+    color:var(--chalk) !important;
+    font-family:'Roboto Mono',monospace;
+    font-size:0.75rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:700;
+    text-decoration:none;
+    padding:10px 18px;
+    border:1px solid var(--clay);
+    transition:background .2s, color .2s;
+    white-space:nowrap;
+  }
+  .nav-contact-btn:hover{background:transparent;color:var(--clay) !important;}
 
   /* HERO */
   .hero{
@@ -255,7 +270,48 @@
   .gpa-badge .num{font-family:'Anton',sans-serif;font-size:1.8rem;}
   .gpa-badge .txt{font-family:'Roboto Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;opacity:0.8;}
 
-  /* COACHES */
+  .statement-section{
+    padding:76px 0;
+  }
+  .statement-box{
+    position:relative;
+    max-width:760px;
+    margin:0 auto;
+    padding:44px 40px 44px 56px;
+    border-left:4px solid var(--clay);
+    background:var(--chalk-dim);
+  }
+  .statement-box::before{
+    content:"“";
+    position:absolute;
+    top:-10px;
+    left:16px;
+    font-family:'Anton', sans-serif;
+    font-size:5rem;
+    color:var(--clay);
+    opacity:0.35;
+    line-height:1;
+  }
+  .statement-box p{
+    font-size:1.15rem;
+    line-height:1.7;
+    color:var(--ink);
+    position:relative;
+    z-index:1;
+  }
+  .statement-sig{
+    margin-top:24px;
+    font-family:'Roboto Mono',monospace;
+    font-size:0.78rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--clay);
+    font-weight:700;
+  }
+  @media(max-width:600px){
+    .statement-box{padding:36px 24px 36px 34px;}
+    .statement-box p{font-size:1.02rem;}
+  }
   .coach-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -413,10 +469,11 @@
     <div class="nav-links">
       <a href="#tools">Tools</a>
       <a href="#about">About</a>
+      <a href="#statement">Statement</a>
       <a href="#coaches">Coaches</a>
       <a href="#video">Video</a>
-      <a href="#contact">Contact</a>
     </div>
+    <a href="#contact" class="nav-contact-btn">Contact</a>
   </div>
 </nav>
 
@@ -518,6 +575,17 @@
   </div>
 </section>
 
+<section class="statement-section" id="statement">
+  <div class="wrap">
+    <div class="sec-eyebrow">In His Own Words</div>
+    <h2 class="sec-title">Personal Statement</h2>
+    <div class="statement-box fade-up">
+      <p>As a versatile infielder for Clements High School and Offseason Baseball, my focus is playing sharp, high-IQ baseball every time I step onto the dirt. I pride myself on sound mechanics, continuous hustle, and compact power at the plate. Balancing top-tier academics with travel ball has taught me time management and accountability&mdash;traits I bring into the dugout every single day. I&rsquo;m looking for a college program where my grit, adaptability, and commitment to growth will make a direct impact.</p>
+      <div class="statement-sig">&mdash; Eli Pulmano</div>
+    </div>
+  </div>
+</section>
+
 <section class="section alt" id="coaches">
   <div class="wrap">
     <div class="sec-eyebrow">References</div>
@@ -554,7 +622,6 @@
     <h2>Interested in Eli?</h2>
     <div class="contact-links">
       <a href="mailto:eli.pulmano@gmail.com">eli.pulmano@gmail.com</a>
-      <a href="tel:3466260145">346-626-0145</a>
       <a href="https://x.com/EliPulmano" target="_blank" rel="noopener">@EliPulmano</a>
     </div>
 
