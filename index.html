@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eli Pulmano | Infielder, Class of 2030</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --clay: #B5502E;
+    --clay-dark: #8C3C21;
+    --diamond-green: #2C4A34;
+    --diamond-green-light: #3E6349;
+    --ink: #1B2430;
+    --chalk: #F7F4EC;
+    --chalk-dim: #E7E1D2;
+    --gold: #C9A227;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--chalk);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Anton', sans-serif;
+    font-weight:400;
+    letter-spacing:0.01em;
+    text-transform:uppercase;
+  }
+  .mono{font-family:'Roboto Mono', monospace;}
+  a{color:inherit;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 32px;}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:var(--ink); color:var(--chalk);
+    border-bottom:3px solid var(--clay);
+  }
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:64px;}
+  .nav-name{font-family:'Anton',sans-serif;font-size:1.1rem;letter-spacing:0.03em;}
+  .nav-links{display:flex;gap:28px;font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;}
+  .nav-links a{text-decoration:none;opacity:0.85;transition:opacity .2s, color .2s;padding-bottom:4px;border-bottom:2px solid transparent;}
+  .nav-links a:hover{opacity:1;border-color:var(--clay);}
+  @media(max-width:640px){.nav-links{display:none;}}
+
+  /* HERO */
+  .hero{
+    background:
+      linear-gradient(180deg, rgba(27,36,48,0.0) 0%, rgba(27,36,48,0.85) 100%),
+      var(--ink);
+    color:var(--chalk);
+    position:relative;
+    padding:64px 0 0 0;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap:40px;
+    align-items:end;
+  }
+  .hero-eyebrow{
+    font-family:'Roboto Mono',monospace;
+    font-size:0.8rem;
+    letter-spacing:0.18em;
+    color:var(--clay);
+    text-transform:uppercase;
+    margin-bottom:14px;
+    font-weight:700;
+  }
+  .hero h1{
+    font-size:clamp(3rem, 8vw, 5.5rem);
+    line-height:0.92;
+    margin-bottom:18px;
+  }
+  .hero-position{
+    display:inline-block;
+    background:var(--clay);
+    color:var(--chalk);
+    font-family:'Anton',sans-serif;
+    letter-spacing:0.05em;
+    padding:6px 16px;
+    font-size:0.95rem;
+    margin-bottom:22px;
+  }
+  .hero-vitals{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0;
+    margin-bottom:36px;
+    border-top:1px solid rgba(247,244,236,0.25);
+  }
+  .hero-vitals div{
+    padding:14px 22px 14px 0;
+    margin-right:22px;
+    border-bottom:1px solid rgba(247,244,236,0.25);
+    flex:1 1 auto;
+  }
+  .hero-vitals .num{font-family:'Roboto Mono',monospace;font-size:1.15rem;font-weight:700;display:block;}
+  .hero-vitals .lbl{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.65;}
+  .hero-photo{
+    position:relative;
+    align-self:end;
+  }
+  .hero-photo img{
+    width:100%;
+    display:block;
+    border:6px solid var(--clay);
+    aspect-ratio: 4/4.6;
+    object-fit:cover;
+    object-position: center 15%;
+  }
+  .hero-photo::before{
+    content:"";
+    position:absolute;
+    top:16px; left:16px; right:-16px; bottom:-16px;
+    border:2px solid var(--gold);
+    z-index:-1;
+  }
+
+  /* SCOREBOARD STRIP */
+  .scoreboard{
+    background:var(--clay-dark);
+    color:var(--chalk);
+    padding:0;
+  }
+  .scoreboard .wrap{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+  }
+  .sb-cell{
+    padding:26px 18px;
+    text-align:center;
+    border-right:1px solid rgba(247,244,236,0.2);
+  }
+  .sb-cell:last-child{border-right:none;}
+  .sb-cell .val{
+    font-family:'Roboto Mono',monospace;
+    font-weight:700;
+    font-size:clamp(1.5rem,3.5vw,2.1rem);
+    display:block;
+  }
+  .sb-cell .cap{
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    opacity:0.75;
+    margin-top:4px;
+  }
+  @media(max-width:640px){
+    .scoreboard .wrap{grid-template-columns:repeat(2,1fr);}
+    .sb-cell:nth-child(2){border-right:none;}
+  }
+
+  /* SECTION HEADER */
+  .section{padding:76px 0;}
+  .section.alt{background:var(--chalk-dim);}
+  .sec-eyebrow{
+    font-family:'Roboto Mono',monospace;
+    font-size:0.75rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--clay);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  .sec-title{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:34px;}
+
+  /* DIAMOND SIGNATURE */
+  .diamond-section{
+    background:var(--diamond-green);
+    color:var(--chalk);
+    padding:76px 0;
+  }
+  .diamond-grid{
+    display:grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap:48px;
+    align-items:center;
+  }
+  @media(max-width:800px){
+    .diamond-grid{grid-template-columns:1fr;}
+  }
+  .diamond-copy p{opacity:0.9;margin-bottom:16px;max-width:46ch;}
+  .diamond-copy .sec-eyebrow{color:var(--gold);}
+  .field-wrap{position:relative;width:100%;max-width:440px;margin:0 auto;}
+  .callout{
+    position:absolute;
+    font-family:'Roboto Mono',monospace;
+    font-size:0.72rem;
+    line-height:1.3;
+    background:var(--ink);
+    border:1px solid var(--gold);
+    padding:6px 10px;
+    white-space:nowrap;
+  }
+  .callout .k{color:var(--gold);font-weight:700;display:block;letter-spacing:0.06em;font-size:0.62rem;}
+  .callout-2b{top:2%; left:52%;}
+  .callout-ss{top:20%; left:-4%;}
+  .callout-3b{top:56%; left:-10%;}
+  @media(max-width:520px){
+    .callout{font-size:0.62rem;padding:5px 8px;}
+  }
+
+  /* ABOUT + ACADEMICS */
+  .two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+  }
+  @media(max-width:760px){.two-col{grid-template-columns:1fr;}}
+  .card{
+    background:var(--chalk);
+    border:1px solid var(--chalk-dim);
+    border-top:4px solid var(--clay);
+    padding:28px 26px;
+  }
+  .card h3{font-size:1.15rem;margin-bottom:16px;}
+  .card p{margin-bottom:10px;font-size:0.95rem;}
+  .card .label{
+    font-family:'Roboto Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--clay);
+    font-weight:700;
+    display:block;
+    margin-bottom:2px;
+  }
+  .field-row{margin-bottom:16px;}
+  .ap-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+  .ap-tags span{
+    background:var(--diamond-green);
+    color:var(--chalk);
+    font-family:'Roboto Mono',monospace;
+    font-size:0.72rem;
+    padding:5px 10px;
+  }
+  .gpa-badge{
+    display:inline-flex;
+    align-items:baseline;
+    gap:8px;
+    background:var(--ink);
+    color:var(--chalk);
+    padding:10px 18px;
+    margin-bottom:18px;
+  }
+  .gpa-badge .num{font-family:'Anton',sans-serif;font-size:1.8rem;}
+  .gpa-badge .txt{font-family:'Roboto Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;opacity:0.8;}
+
+  /* COACHES */
+  .coach-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+  }
+  @media(max-width:700px){.coach-grid{grid-template-columns:1fr;}}
+  .coach-card{
+    background:var(--ink);
+    color:var(--chalk);
+    padding:26px;
+  }
+  .coach-card .role{
+    font-family:'Roboto Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:8px;
+    display:block;
+  }
+  .coach-card .name{font-family:'Anton',sans-serif;font-size:1.3rem;margin-bottom:4px;}
+  .coach-card .org{opacity:0.7;font-size:0.88rem;}
+
+  /* VIDEO */
+  .video-box{
+    border:2px dashed var(--clay);
+    padding:60px 24px;
+    text-align:center;
+    background:var(--chalk-dim);
+  }
+  .video-box .display{font-size:1.1rem;letter-spacing:0.04em;margin-bottom:8px;}
+  .video-box p{opacity:0.7;font-size:0.9rem;}
+
+  /* CONTACT */
+  .contact-section{
+    background:var(--ink);
+    color:var(--chalk);
+    padding:76px 0;
+    text-align:center;
+  }
+  .contact-section .sec-eyebrow{color:var(--gold);}
+  .contact-section h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:28px;}
+  .contact-links{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:14px;
+    margin-bottom:48px;
+  }
+  .contact-links a{
+    font-family:'Roboto Mono',monospace;
+    font-size:0.9rem;
+    border:1px solid var(--clay);
+    padding:14px 24px;
+    text-decoration:none;
+    transition:background .2s, color .2s;
+  }
+  .contact-links a:hover{background:var(--clay);}
+
+  .contact-divider{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    max-width:520px;
+    margin:0 auto 40px;
+  }
+  .contact-divider .line{flex:1;height:1px;background:rgba(247,244,236,0.2);}
+  .contact-divider span{
+    font-family:'Roboto Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    opacity:0.55;
+  }
+
+  .contact-form{
+    max-width:520px;
+    margin:0 auto;
+    text-align:left;
+  }
+  .form-row{margin-bottom:20px;}
+  .form-row label{
+    display:block;
+    font-family:'Roboto Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:8px;
+  }
+  .form-row input,
+  .form-row textarea{
+    width:100%;
+    background:transparent;
+    border:1px solid rgba(247,244,236,0.35);
+    color:var(--chalk);
+    font-family:'Work Sans', sans-serif;
+    font-size:0.95rem;
+    padding:12px 14px;
+    outline:none;
+    transition:border-color .2s;
+  }
+  .form-row input:focus,
+  .form-row textarea:focus{border-color:var(--clay);}
+  .form-row textarea{resize:vertical;min-height:110px;}
+  .form-two{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:520px){.form-two{grid-template-columns:1fr;}}
+  .form-submit{
+    font-family:'Roboto Mono',monospace;
+    font-size:0.85rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    background:var(--clay);
+    color:var(--chalk);
+    border:1px solid var(--clay);
+    padding:14px 28px;
+    cursor:pointer;
+    transition:background .2s, color .2s;
+  }
+  .form-submit:hover{background:transparent;color:var(--clay);}
+  .form-status{
+    margin-top:14px;
+    font-family:'Roboto Mono',monospace;
+    font-size:0.78rem;
+    opacity:0.8;
+    min-height:1.2em;
+  }
+
+  footer{
+    background:var(--ink);
+    color:rgba(247,244,236,0.5);
+    text-align:center;
+    padding:22px;
+    font-size:0.75rem;
+    font-family:'Roboto Mono',monospace;
+    letter-spacing:0.05em;
+    border-top:1px solid rgba(247,244,236,0.15);
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .fade-up{
+      opacity:0;
+      transform:translateY(16px);
+      transition:opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.in{opacity:1;transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-name">PULMANO <span class="mono" style="color:var(--clay);font-size:0.75rem;">// 2B・SS・3B</span></div>
+    <div class="nav-links">
+      <a href="#tools">Tools</a>
+      <a href="#about">About</a>
+      <a href="#coaches">Coaches</a>
+      <a href="#video">Video</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="hero-eyebrow">Recruiting Profile</div>
+      <h1>Eli<br>Pulmano</h1>
+      <div class="hero-position">Infielder — Class of 2030</div>
+      <div class="hero-vitals">
+        <div><span class="num">5'2"</span><span class="lbl">Height</span></div>
+        <div><span class="num">120 lbs</span><span class="lbl">Weight</span></div>
+        <div><span class="num">R / R</span><span class="lbl">Bats / Throws</span></div>
+        <div><span class="num">4.0</span><span class="lbl">GPA</span></div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="eli-photo.jpeg" alt="Eli Pulmano on the infield">
+    </div>
+  </div>
+</header>
+
+<section class="scoreboard" id="tools">
+  <div class="wrap">
+    <div class="sb-cell"><span class="val">72</span><span class="cap">Exit Velo (mph)</span></div>
+    <div class="sb-cell"><span class="val">7.42</span><span class="cap">60-Yard (sec)</span></div>
+    <div class="sb-cell"><span class="val">70</span><span class="cap">IF Throw (mph)</span></div>
+    <div class="sb-cell"><span class="val">72</span><span class="cap">OF Throw (mph)</span></div>
+  </div>
+</section>
+
+<section class="diamond-section">
+  <div class="wrap diamond-grid">
+    <div class="diamond-copy fade-up">
+      <div class="sec-eyebrow">The Glove</div>
+      <h2 class="sec-title" style="color:var(--chalk);">Built for the infield</h2>
+      <p>Eli plays across the dirt — second base, shortstop, and third — bringing an accurate infield arm (70 mph) and the range to cover multiple spots on the diamond.</p>
+      <p>At the plate, he pairs a compact swing with fast bat speed, driving a 72 mph exit velocity for his age and size.</p>
+    </div>
+    <div class="field-wrap">
+      <svg viewBox="0 0 400 400" width="100%" style="display:block;">
+        <!-- infield dirt -->
+        <polygon points="200,60 340,200 200,340 60,200" fill="#8C5A3C" stroke="#F7F4EC" stroke-width="2"/>
+        <!-- grass -->
+        <polygon points="200,110 290,200 200,290 110,200" fill="var(--diamond-green-light)" stroke="#F7F4EC" stroke-width="2"/>
+        <!-- bases -->
+        <rect x="192" y="52" width="16" height="16" fill="#F7F4EC" transform="rotate(45 200 60)"/>
+        <rect x="332" y="192" width="16" height="16" fill="#F7F4EC" transform="rotate(45 340 200)"/>
+        <rect x="192" y="332" width="16" height="16" fill="#F7F4EC" transform="rotate(45 200 340)"/>
+        <rect x="52" y="192" width="16" height="16" fill="#F7F4EC" transform="rotate(45 60 200)"/>
+        <!-- mound -->
+        <circle cx="200" cy="200" r="10" fill="#8C5A3C" stroke="#F7F4EC" stroke-width="1.5"/>
+        <!-- position markers -->
+        <circle cx="255" cy="150" r="7" fill="var(--gold)"/>
+        <circle cx="150" cy="150" r="7" fill="var(--gold)"/>
+        <circle cx="110" cy="245" r="7" fill="var(--gold)"/>
+      </svg>
+      <div class="callout callout-2b"><span class="k">2B</span>Double-play pivot</div>
+      <div class="callout callout-ss"><span class="k">SS</span>70 mph IF arm</div>
+      <div class="callout callout-3b"><span class="k">3B</span>Hot-corner reactions</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="sec-eyebrow">Background</div>
+    <h2 class="sec-title">School & Academics</h2>
+    <div class="two-col">
+      <div class="card fade-up">
+        <h3>Athletics</h3>
+        <div class="field-row">
+          <span class="label">High School</span>
+          <p>Clements High School</p>
+        </div>
+        <div class="field-row">
+          <span class="label">Travel Team</span>
+          <p>Offseason Baseball</p>
+        </div>
+        <div class="field-row">
+          <span class="label">Graduation Year</span>
+          <p>2030</p>
+        </div>
+      </div>
+      <div class="card fade-up">
+        <h3>Academics</h3>
+        <div class="gpa-badge">
+          <span class="num">4.0</span>
+          <span class="txt">Cumulative GPA</span>
+        </div>
+        <span class="label">Current Coursework</span>
+        <div class="ap-tags">
+          <span>AP Chemistry</span>
+          <span>AP Pre-Calculus</span>
+          <span>AP Human Geography</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="coaches">
+  <div class="wrap">
+    <div class="sec-eyebrow">References</div>
+    <h2 class="sec-title">Coaches</h2>
+    <div class="coach-grid">
+      <div class="coach-card fade-up">
+        <span class="role">High School Coach</span>
+        <div class="name">Brett Velliquette</div>
+        <div class="org">Clements High School</div>
+      </div>
+      <div class="coach-card fade-up">
+        <span class="role">Travel / Offseason Coaches</span>
+        <div class="name">Jason Lozano &amp; Isa Garcia</div>
+        <div class="org">Offseason Baseball</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="video">
+  <div class="wrap">
+    <div class="sec-eyebrow">Film</div>
+    <h2 class="sec-title">Highlight Video</h2>
+    <div class="video-box fade-up">
+      <div class="display">Highlight reel coming soon</div>
+      <p>Video links (Hudl / YouTube) will be added here.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="wrap">
+    <div class="sec-eyebrow">Get in touch</div>
+    <h2>Interested in Eli?</h2>
+    <div class="contact-links">
+      <a href="mailto:eli.pulmano@gmail.com">eli.pulmano@gmail.com</a>
+      <a href="tel:3466260145">346-626-0145</a>
+      <a href="https://x.com/EliPulmano" target="_blank" rel="noopener">@EliPulmano</a>
+    </div>
+
+    <div class="contact-divider"><div class="line"></div><span>or send a message</span><div class="line"></div></div>
+
+    <form class="contact-form" id="coachForm">
+      <div class="form-two">
+        <div class="form-row">
+          <label for="cf-name">Your Name</label>
+          <input type="text" id="cf-name" name="name" required>
+        </div>
+        <div class="form-row">
+          <label for="cf-org">School / Program</label>
+          <input type="text" id="cf-org" name="org">
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="cf-email">Your Email</label>
+        <input type="email" id="cf-email" name="email" required>
+      </div>
+      <div class="form-row">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" required></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Message</button>
+      <div class="form-status" id="cf-status"></div>
+    </form>
+  </div>
+</section>
+
+<footer>ELI PULMANO — INFIELDER — CLASS OF 2030</footer>
+
+<script>
+  const items = document.querySelectorAll('.fade-up');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, {threshold:0.15});
+  items.forEach(i=>obs.observe(i));
+
+  const cfForm = document.getElementById('coachForm');
+  const cfStatus = document.getElementById('cf-status');
+  cfForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('cf-name').value.trim();
+    const org = document.getElementById('cf-org').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const message = document.getElementById('cf-message').value.trim();
+
+    const subject = encodeURIComponent('Recruiting message from ' + name + (org ? ' (' + org + ')' : ''));
+    const body = encodeURIComponent(
+      message + '\n\n---\nFrom: ' + name +
+      (org ? '\nSchool/Program: ' + org : '') +
+      '\nReply to: ' + email
+    );
+    window.location.href = 'mailto:eli.pulmano@gmail.com?subject=' + subject + '&body=' + body;
+    cfStatus.textContent = 'Opening your email app to send this to Eli...';
+  });
+</script>
+
+</body>
+</html>
