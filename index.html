@@ -81,6 +81,10 @@
     gap:40px;
     align-items:end;
   }
+  @media(max-width:760px){
+    .hero .wrap{grid-template-columns:1fr;gap:28px;}
+    .hero-photo{max-width:360px;margin:0 auto;}
+  }
   .hero-eyebrow{
     font-family:'Roboto Mono',monospace;
     font-size:0.8rem;
@@ -103,7 +107,70 @@
     letter-spacing:0.05em;
     padding:6px 16px;
     font-size:0.95rem;
+  }
+  .hero-badges-row{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:18px;
     margin-bottom:22px;
+  }
+  .hero-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Roboto Mono',monospace;
+    font-size:0.78rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--gold);
+    text-decoration:none;
+    border-bottom:1px solid var(--gold);
+    padding-bottom:3px;
+    transition:color .2s, border-color .2s;
+  }
+  .hero-cta:hover{color:var(--chalk);border-color:var(--chalk);}
+  .hero-play-btn{
+    position:absolute;
+    bottom:20px; right:20px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:rgba(27,36,48,0.88);
+    border:1px solid var(--gold);
+    color:var(--chalk);
+    text-decoration:none;
+    padding:10px 16px 10px 10px;
+    font-family:'Roboto Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:700;
+    transition:background .2s, transform .2s;
+    z-index:2;
+  }
+  .hero-play-btn:hover{background:var(--clay);transform:translateY(-2px);}
+  .hero-play-icon{
+    width:26px;height:26px;
+    border-radius:50%;
+    background:var(--gold);
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.65rem;
+    flex-shrink:0;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .hero-play-icon{animation:heroPulse 2.2s ease-in-out infinite;}
+  }
+  @keyframes heroPulse{
+    0%,100%{box-shadow:0 0 0 0 rgba(201,162,39,0.55);}
+    50%{box-shadow:0 0 0 8px rgba(201,162,39,0);}
+  }
+  @media(max-width:640px){
+    .hero-play-btn{bottom:12px;right:12px;padding:8px 12px 8px 8px;font-size:0.66rem;}
   }
   .hero-vitals{
     display:flex;
@@ -223,6 +290,105 @@
   @media(max-width:520px){
     .callout{font-size:0.62rem;padding:5px 8px;}
   }
+
+  /* PG SCOUTING & RANKINGS */
+  .pg-top{
+    display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;
+    gap:20px;margin-bottom:44px;
+  }
+  .pg-grade{
+    display:flex;align-items:center;gap:16px;
+    background:var(--ink);color:var(--chalk);
+    padding:16px 22px;max-width:520px;
+  }
+  .pg-grade .num{font-family:'Anton',sans-serif;font-size:2.6rem;color:var(--gold);line-height:1;}
+  .pg-grade .k{
+    font-family:'Roboto Mono',monospace;font-size:0.68rem;letter-spacing:0.1em;
+    text-transform:uppercase;color:var(--gold);font-weight:700;display:block;margin-bottom:4px;
+  }
+  .pg-grade p{font-size:0.88rem;opacity:0.9;}
+  .pg-links{display:flex;gap:12px;flex-wrap:wrap;}
+  .pg-links a{
+    font-family:'Roboto Mono',monospace;font-size:0.75rem;
+    border:1px solid var(--clay);padding:10px 16px;text-decoration:none;
+    transition:background .2s, color .2s;white-space:nowrap;
+  }
+  .pg-links a:hover{background:var(--clay);color:var(--chalk);}
+
+  .pg-block{margin-bottom:44px;}
+  .pg-block:last-child{margin-bottom:0;}
+  .pg-block > .label{
+    font-family:'Roboto Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--clay);
+    font-weight:700;
+    display:block;
+  }
+
+  .pg-perc-grid{display:grid;gap:14px;margin-top:16px;}
+  .pg-perc-row{display:grid;grid-template-columns:150px 1fr 76px;align-items:center;gap:14px;}
+  @media(max-width:560px){.pg-perc-row{grid-template-columns:110px 1fr 60px;gap:10px;}}
+  .pg-perc-name{font-size:0.85rem;font-weight:600;}
+  .pg-perc-bar{height:10px;background:var(--chalk-dim);border:1px solid rgba(27,36,48,0.1);overflow:hidden;}
+  .pg-perc-fill{height:100%;background:var(--clay);}
+  .pg-perc-val{font-family:'Roboto Mono',monospace;font-size:0.78rem;text-align:right;color:var(--clay-dark);font-weight:700;}
+
+  .pg-prog-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:14px;margin-top:16px;
+  }
+  .pg-prog-card{
+    background:var(--chalk);border:1px solid var(--chalk-dim);border-top:3px solid var(--diamond-green);
+    padding:16px 18px;text-align:center;
+  }
+  .pg-prog-card .metric{
+    font-family:'Roboto Mono',monospace;font-size:0.66rem;letter-spacing:0.08em;
+    text-transform:uppercase;color:var(--clay);margin-bottom:6px;display:block;
+  }
+  .pg-prog-card .delta{font-family:'Anton',sans-serif;font-size:1.5rem;color:var(--diamond-green);}
+
+  .pg-report-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:16px;}
+  @media(max-width:760px){.pg-report-grid{grid-template-columns:1fr;}}
+  .pg-report-card{background:var(--ink);color:var(--chalk);padding:22px;}
+  .pg-report-card h4{
+    font-family:'Anton',sans-serif;font-size:0.95rem;color:var(--gold);
+    margin-bottom:12px;letter-spacing:0.03em;text-transform:uppercase;
+  }
+  .pg-quote-list{display:flex;flex-direction:column;gap:8px;list-style:none;}
+  .pg-quote-list li{font-size:0.85rem;opacity:0.9;position:relative;padding-left:14px;}
+  .pg-quote-list li::before{content:"—";position:absolute;left:0;color:var(--clay);}
+
+  .pg-live-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px;}
+  @media(max-width:700px){.pg-live-grid{grid-template-columns:1fr;}}
+  .pg-live-card{
+    background:var(--chalk);border:1px solid var(--chalk-dim);border-left:4px solid var(--clay);
+    padding:20px 22px;
+  }
+  .pg-live-tag{
+    font-family:'Roboto Mono',monospace;font-size:0.68rem;letter-spacing:0.08em;
+    text-transform:uppercase;color:var(--clay);font-weight:700;display:block;margin-bottom:8px;
+  }
+  .pg-live-card p{font-size:0.92rem;line-height:1.55;color:var(--ink);}
+
+  .pg-bestgame-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px;}
+  @media(max-width:700px){.pg-bestgame-grid{grid-template-columns:1fr;}}
+  .pg-bg-card{background:var(--diamond-green);color:var(--chalk);padding:20px 22px;}
+  .pg-bg-card h4{
+    font-family:'Roboto Mono',monospace;font-size:0.68rem;letter-spacing:0.1em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:14px;
+  }
+  .pg-bg-stats{display:flex;flex-wrap:wrap;gap:14px 22px;}
+  .pg-bg-stat b{font-family:'Anton',sans-serif;font-size:1.3rem;display:block;}
+  .pg-bg-stat span{font-size:0.64rem;text-transform:uppercase;letter-spacing:0.07em;opacity:0.75;}
+
+  .pg-counts{
+    margin-top:8px;padding-top:20px;border-top:1px solid rgba(27,36,48,0.12);
+    display:flex;flex-wrap:wrap;gap:8px 26px;
+    font-family:'Roboto Mono',monospace;font-size:0.78rem;color:var(--ink);opacity:0.75;
+  }
+  .pg-counts b{color:var(--clay);font-weight:700;}
 
   /* ABOUT + ACADEMICS */
   .two-col{
@@ -344,6 +510,45 @@
   }
   .video-box .display{font-size:1.1rem;letter-spacing:0.04em;margin-bottom:8px;}
   .video-box p{opacity:0.7;font-size:0.9rem;}
+  .video-frame{
+    border:3px solid var(--clay);
+    background:var(--ink);
+    overflow:hidden;
+  }
+  .video-frame video{width:100%;display:block;max-height:640px;background:#000;}
+  .video-caption{
+    margin-top:14px;
+    font-family:'Roboto Mono',monospace;
+    font-size:0.78rem;
+    letter-spacing:0.05em;
+    color:var(--clay-dark);
+    text-align:center;
+  }
+  .video-grid{
+    display:grid;
+    grid-template-columns:1.3fr 0.9fr;
+    gap:28px;
+    align-items:start;
+  }
+  @media(max-width:800px){.video-grid{grid-template-columns:1fr;}}
+  .pelotero-panel{background:var(--ink);color:var(--chalk);padding:26px 28px;}
+  .pelotero-panel .pel-brand{
+    font-family:'Roboto Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:block;
+  }
+  .pel-headline{
+    display:flex;align-items:baseline;gap:14px;margin-bottom:20px;
+    padding-bottom:20px;border-bottom:1px solid rgba(247,244,236,0.15);
+  }
+  .pel-headline .num{font-family:'Anton',sans-serif;font-size:2.8rem;color:var(--clay);line-height:1;}
+  .pel-headline .lbl{font-size:0.85rem;line-height:1.4;}
+  .pel-headline .lbl .sub{display:block;opacity:0.65;font-size:0.76rem;margin-top:3px;}
+  .pel-metric-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px;gap:12px;}
+  .pel-metric-row:last-child{margin-bottom:0;}
+  .pel-metric-name{font-size:0.82rem;opacity:0.9;white-space:nowrap;}
+  .pel-metric-bar-wrap{flex:1;height:6px;background:rgba(247,244,236,0.12);}
+  .pel-metric-bar{height:100%;background:var(--gold);}
+  .pel-metric-val{font-family:'Roboto Mono',monospace;font-size:0.82rem;font-weight:700;width:26px;text-align:right;}
 
   /* CONTACT */
   .contact-section{
@@ -468,10 +673,11 @@
     <div class="nav-name">PULMANO <span class="mono" style="color:var(--clay);font-size:0.75rem;">// 2B・SS・3B</span></div>
     <div class="nav-links">
       <a href="#tools">Tools</a>
+      <a href="#video">Film</a>
+      <a href="#scouting">Scouting</a>
       <a href="#about">About</a>
       <a href="#statement">Statement</a>
       <a href="#coaches">Coaches</a>
-      <a href="#video">Video</a>
     </div>
     <a href="#contact" class="nav-contact-btn">Contact</a>
   </div>
@@ -482,16 +688,23 @@
     <div>
       <div class="hero-eyebrow">Recruiting Profile</div>
       <h1>Eli<br>Pulmano</h1>
-      <div class="hero-position">Infielder — Class of 2030</div>
+      <div class="hero-badges-row">
+        <div class="hero-position">Infielder — Class of 2030</div>
+        <a href="#video" class="hero-cta">▶ Watch Highlight Film</a>
+      </div>
       <div class="hero-vitals">
         <div><span class="num">5'2"</span><span class="lbl">Height</span></div>
-        <div><span class="num">120 lbs</span><span class="lbl">Weight</span></div>
+        <div><span class="num">117 lbs</span><span class="lbl">Weight</span></div>
         <div><span class="num">R / R</span><span class="lbl">Bats / Throws</span></div>
         <div><span class="num">4.0</span><span class="lbl">GPA</span></div>
       </div>
     </div>
     <div class="hero-photo">
       <img src="eli-photo.jpeg" alt="Eli Pulmano on the infield">
+      <a href="#video" class="hero-play-btn" aria-label="Watch highlight film">
+        <span class="hero-play-icon">▶</span>
+        <span>Watch Film</span>
+      </a>
     </div>
   </div>
 </header>
@@ -502,6 +715,51 @@
     <div class="sb-cell"><span class="val">7.42</span><span class="cap">60-Yard (sec)</span></div>
     <div class="sb-cell"><span class="val">70</span><span class="cap">IF Throw (mph)</span></div>
     <div class="sb-cell"><span class="val">72</span><span class="cap">OF Throw (mph)</span></div>
+  </div>
+</section>
+
+<section class="section" id="video">
+  <div class="wrap">
+    <div class="sec-eyebrow">Film</div>
+    <h2 class="sec-title">Highlight Video</h2>
+    <div class="video-grid">
+      <div>
+        <div class="video-frame fade-up">
+          <video controls preload="metadata" playsinline>
+            <source src="https://pelotero-production-video-ai-jobs.s3.amazonaws.com/476fa155-5074-4297-a529-e896ca3bbc6c/overlay.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <p class="video-caption">2025 PG Summer South Prospect Gateway — swing &amp; defense overlay</p>
+      </div>
+      <div class="pelotero-panel fade-up">
+        <span class="pel-brand">Pelotero Swing Analysis</span>
+        <div class="pel-headline">
+          <span class="num">90</span>
+          <span class="lbl">Swing Mechanics Score&trade;<span class="sub">Slow-motion video + bat sensor data</span></span>
+        </div>
+        <div class="pel-metric-row">
+          <span class="pel-metric-name">Direction</span>
+          <div class="pel-metric-bar-wrap"><div class="pel-metric-bar" style="width:91%;"></div></div>
+          <span class="pel-metric-val">91</span>
+        </div>
+        <div class="pel-metric-row">
+          <span class="pel-metric-name">Plane</span>
+          <div class="pel-metric-bar-wrap"><div class="pel-metric-bar" style="width:88%;"></div></div>
+          <span class="pel-metric-val">88</span>
+        </div>
+        <div class="pel-metric-row">
+          <span class="pel-metric-name">Depth &amp; Length</span>
+          <div class="pel-metric-bar-wrap"><div class="pel-metric-bar" style="width:92%;"></div></div>
+          <span class="pel-metric-val">92</span>
+        </div>
+        <div class="pel-metric-row">
+          <span class="pel-metric-name">Mechanics</span>
+          <div class="pel-metric-bar-wrap"><div class="pel-metric-bar" style="width:88%;"></div></div>
+          <span class="pel-metric-val">88</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -534,6 +792,179 @@
       <div class="callout callout-2b"><span class="k">2B</span>Double-play pivot</div>
       <div class="callout callout-ss"><span class="k">SS</span>70 mph IF arm</div>
       <div class="callout callout-3b"><span class="k">3B</span>Hot-corner reactions</div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="scouting">
+  <div class="wrap">
+    <div class="sec-eyebrow">Verified by Perfect Game</div>
+    <h2 class="sec-title">Scouting Report &amp; Rankings</h2>
+
+    <div class="pg-top fade-up">
+      <div class="pg-grade">
+        <span class="num">7</span>
+        <div>
+          <span class="k">PG Grade</span>
+          <p>College prospect, possible future draft pick with development</p>
+        </div>
+      </div>
+      <div class="pg-links">
+        <a href="https://www.perfectgame.org/Players/Playerprofile.aspx?ID=1042803" target="_blank" rel="noopener">Perfect Game Profile ↗</a>
+        <a href="https://fivetool.org/players/80236868-b64c-452e-945d-d0043129ac63" target="_blank" rel="noopener">Five Tool Profile ↗</a>
+      </div>
+    </div>
+
+    <div class="pg-block fade-up">
+      <span class="label">Percentile vs. Class of 2030</span>
+      <div class="pg-perc-grid">
+        <div class="pg-perc-row">
+          <span class="pg-perc-name">60-Yard Dash</span>
+          <div class="pg-perc-bar"><div class="pg-perc-fill" style="width:83.55%;"></div></div>
+          <span class="pg-perc-val">83.6th</span>
+        </div>
+        <div class="pg-perc-row">
+          <span class="pg-perc-name">10-Yard Split</span>
+          <div class="pg-perc-bar"><div class="pg-perc-fill" style="width:87.16%;"></div></div>
+          <span class="pg-perc-val">87.2th</span>
+        </div>
+        <div class="pg-perc-row">
+          <span class="pg-perc-name">IF Velo</span>
+          <div class="pg-perc-bar"><div class="pg-perc-fill" style="width:67.20%;"></div></div>
+          <span class="pg-perc-val">67.2th</span>
+        </div>
+        <div class="pg-perc-row">
+          <span class="pg-perc-name">OF Velo</span>
+          <div class="pg-perc-bar"><div class="pg-perc-fill" style="width:65.15%;"></div></div>
+          <span class="pg-perc-val">65.2th</span>
+        </div>
+        <div class="pg-perc-row">
+          <span class="pg-perc-name">R-Grip Strength</span>
+          <div class="pg-perc-bar"><div class="pg-perc-fill" style="width:66.06%;"></div></div>
+          <span class="pg-perc-val">66.1th</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pg-block fade-up">
+      <span class="label">Career Progression — Between Last Two Showcases (Aug 2025 → Aug 2026)</span>
+      <div class="pg-prog-grid">
+        <div class="pg-prog-card">
+          <span class="metric">FB Velo</span>
+          <span class="delta">+10 mph</span>
+        </div>
+        <div class="pg-prog-card">
+          <span class="metric">Exit Velo</span>
+          <span class="delta">+12 mph</span>
+        </div>
+        <div class="pg-prog-card">
+          <span class="metric">IF Velo</span>
+          <span class="delta">+10 mph</span>
+        </div>
+        <div class="pg-prog-card">
+          <span class="metric">OF Velo</span>
+          <span class="delta">+8 mph</span>
+        </div>
+        <div class="pg-prog-card">
+          <span class="metric">60-Yard</span>
+          <span class="delta">−0.65 sec</span>
+        </div>
+        <div class="pg-prog-card">
+          <span class="metric">10-Yard Split</span>
+          <span class="delta">−0.10 sec</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pg-block fade-up">
+      <span class="label">Scouting Notes — 2025 PG Summer South Prospect Gateway</span>
+      <div class="pg-report-grid">
+        <div class="pg-report-card">
+          <h4>Hitting</h4>
+          <ul class="pg-quote-list">
+            <li>Strength at contact</li>
+            <li>Uphill barrel path</li>
+            <li>Good bat speed</li>
+          </ul>
+        </div>
+        <div class="pg-report-card">
+          <h4>Outfield</h4>
+          <ul class="pg-quote-list">
+            <li>Light on his feet</li>
+            <li>Direct path to the ball</li>
+            <li>Projectable glove actions</li>
+          </ul>
+        </div>
+        <div class="pg-report-card">
+          <h4>Infield</h4>
+          <ul class="pg-quote-list">
+            <li>Works through ball well</li>
+            <li>Good range to backhand</li>
+            <li>Game-like throws</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="pg-block fade-up">
+      <span class="label">Live Look — 2025 PG Summer South Prospect Gateway · Aug 2, 2025 · Tomball, TX</span>
+      <div class="pg-live-grid">
+        <div class="pg-live-card">
+          <span class="pg-live-tag">Batting Practice — 8/2/25</span>
+          <p>&ldquo;Great bat control for age &mdash; really works the front side and great timing with a clean, extended path. Great feel for spraying it up the middle.&rdquo;</p>
+        </div>
+        <div class="pg-live-card">
+          <span class="pg-live-tag">Game Performance — 8/2/25</span>
+          <p>Collected a pair of hits and showed advanced baseball IQ for his age group &mdash; &ldquo;plays with a lot of tempo and can play several defensive spots.&rdquo; His 10-yard split ranked 15th overall at the event.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pg-block fade-up">
+      <span class="label">Live Look — 2026 PG 14U Texas All-State Games · Aug 1&ndash;2, 2026 · Tomball, TX</span>
+      <div class="pg-live-grid">
+        <div class="pg-live-card">
+          <span class="pg-live-tag">Hitting — 8/1/26</span>
+          <p>&ldquo;Doesn&rsquo;t miss a stitch of this fastball, smashing a double to the pull-side gap&rdquo; &mdash; showed &ldquo;a good feel for the pitch on the inner half, generating good swings all game.&rdquo;</p>
+        </div>
+        <div class="pg-live-card">
+          <span class="pg-live-tag">Batting Practice — 8/1/26</span>
+          <p>&ldquo;Showing good bat speed, lacing balls to all parts of the field.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pg-block fade-up">
+      <span class="label">Best Single-Game Line</span>
+      <div class="pg-bestgame-grid">
+        <div class="pg-bg-card">
+          <h4>Batting</h4>
+          <div class="pg-bg-stats">
+            <div class="pg-bg-stat"><b>5</b><span>AB</span></div>
+            <div class="pg-bg-stat"><b>4</b><span>R</span></div>
+            <div class="pg-bg-stat"><b>3</b><span>H</span></div>
+            <div class="pg-bg-stat"><b>4</b><span>RBI</span></div>
+            <div class="pg-bg-stat"><b>2</b><span>2B</span></div>
+            <div class="pg-bg-stat"><b>1</b><span>3B</span></div>
+            <div class="pg-bg-stat"><b>1</b><span>HR</span></div>
+            <div class="pg-bg-stat"><b>5</b><span>SB</span></div>
+          </div>
+        </div>
+        <div class="pg-bg-card">
+          <h4>Pitching</h4>
+          <div class="pg-bg-stats">
+            <div class="pg-bg-stat"><b>2.0</b><span>IP</span></div>
+            <div class="pg-bg-stat"><b>0</b><span>ER</span></div>
+            <div class="pg-bg-stat"><b>3</b><span>K</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pg-counts fade-up">
+      <span><b>115</b> PG events / reports</span>
+      <span><b>42</b> awards earned</span>
+      <span><b>130</b> articles published</span>
     </div>
   </div>
 </section>
@@ -598,20 +1029,9 @@
       </div>
       <div class="coach-card fade-up">
         <span class="role">Travel / Offseason Coaches</span>
-        <div class="name">Jason Lozano &amp; Elanis Westbrook</div>
+        <div class="name">Jason Lozano &amp; Elanis Westbrooks</div>
         <div class="org">Offseason Baseball</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="video">
-  <div class="wrap">
-    <div class="sec-eyebrow">Film</div>
-    <h2 class="sec-title">Highlight Video</h2>
-    <div class="video-box fade-up">
-      <div class="display">Highlight reel coming soon</div>
-      <p>Video links (Hudl / YouTube) will be added here.</p>
     </div>
   </div>
 </section>
